@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskBuddyAndroidApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Start">
+            <Label
+                Text="Tasks"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <ListView ItemsSource="{Binding Tasks}" x:Name="listView" ItemSelected="OnTaskSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label FontSize="16" Text="{Binding Title}" />
+                                    <Label Text="{Binding Description}" />
+                                </StackLayout>
+                                <CheckBox Grid.Column="1" IsChecked="{Binding IsComplete}" CheckedChanged="OnCheckBoxChanged" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+
+
+
+
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    Text="Add Task"
+                    Clicked="OnAddTaskClicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Margin="5, 10"
+                    Grid.Column="0"/>
+
+                <Button 
+                    x:Name="RefreshBtn"
+                    Text="Refresh"
+                    SemanticProperties.Hint="Refreshes your tasklist"
+                    Clicked="OnRefreshClicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Margin="5, 10"
+                    Grid.Column="1"/>
+            </Grid>
+
+            <Button 
+                    x:Name="SettingsBtn"
+                    Text="Settings"
+                    SemanticProperties.Hint="Set server and port"
+                    Clicked="OnSettingClicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Margin="5, 10"
+                    Grid.Column="1"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
